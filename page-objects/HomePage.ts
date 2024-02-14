@@ -1,3 +1,4 @@
+import { EsgKpiEnginePage } from "@page-objects/EsgKpiEnginePage"
 import { type Locator, type Page, expect } from "@playwright/test"
 
 export class HomePage {
@@ -37,6 +38,17 @@ export class HomePage {
     await this.hamburgerMenuIcon.click()
     const sidebarButton = this.page.locator("#main-menu").getByRole("link", { name: "Get in touch" })
     await expect(sidebarButton).toHaveCSS("background-color", "rgb(255, 212, 60)")
+  }
+
+  public async goToFinancePage(): Promise<EsgKpiEnginePage> {
+    if (this.isMobile) {
+      await this.hamburgerMenuIcon.click()
+      await this.page.locator("#main-menu").getByRole("link", { name: "Finance & ESG" }).first().click()
+    } else {
+      await this.page.locator(".header-nav").getByRole("link", { name: "Finance & ESG" }).hover()
+    }
+    await this.page.getByRole("link", { name: "ESG KPI Engine" }).click()
+    return new EsgKpiEnginePage(this.page)
   }
 
   public async acceptCookies(): Promise<void> {
