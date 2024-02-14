@@ -1,3 +1,4 @@
+import { ContactPage } from "@page-objects/ContactPage"
 import { EsgKpiEnginePage } from "@page-objects/EsgKpiEnginePage"
 import { type Locator, type Page, expect } from "@playwright/test"
 
@@ -49,6 +50,11 @@ export class HomePage {
     }
     await this.page.getByRole("link", { name: "ESG KPI Engine" }).click()
     return new EsgKpiEnginePage(this.page)
+  }
+
+  public async goToContactPage(): Promise<ContactPage> {
+    await this.getInTouchButton.click()
+    return new ContactPage(this.page)
   }
 
   public async acceptCookies(): Promise<void> {
