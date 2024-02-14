@@ -9,7 +9,7 @@
   },
   "keywords": [],
   "author": "Anna Grzywacz",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
     "@playwright/test": "^1.41.2",
