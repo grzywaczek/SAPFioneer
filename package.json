@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "e2e:debug": "playwright test --workers 1 --debug",
+    "e2e:run": "playwright test"
+  },
   "keywords": [],
   "author": "Anna Grzywacz",
   "license": "ISC",
